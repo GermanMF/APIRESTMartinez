@@ -1,0 +1,103 @@
+<h2 mat-dialog-title>Añadir nuevo alumno</h2>
+<mat-dialog-content>
+  <form [formGroup]="cursosForm" (ngSubmit)="onSubmit()" id="cursosAltas">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label> Materia </mat-label>
+            <input
+              matInput
+              [formControl]="materiaControl"
+              placeholder="Nombre de la materia"
+            />
+            <mat-error *ngIf="materiaControl.hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="materiaControl.hasError('minlength')">
+              Se esperan al menos 3 caractéres
+            </mat-error>
+            <mat-error *ngIf="materiaControl.hasError('maxlength')">
+              Se esperan 15 caractéres como máximo
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label> Tutor </mat-label>
+            <input
+              matInput
+              [formControl]="tutorControl"
+              placeholder="Tutor de la materia"
+            />
+            <mat-error *ngIf="tutorControl.hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="tutorControl.hasError('minlength')">
+              Se esperan al menos 3 caractéres
+            </mat-error>
+            <mat-error *ngIf="tutorControl.hasError('maxlength')">
+              Se esperan 15 caractéres como máximo
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row subsequentRow">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label> Cupos </mat-label>
+            <input
+              type="number"
+              matInput
+              [formControl]="cuposControl"
+              placeholder="5 - 20"
+            />
+            <mat-hint>Rango de 5 a 20</mat-hint>
+            <mat-error *ngIf="cuposControl.hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="cuposControl.hasError('min')">
+              El cupo mínimo es de 5 alumnos
+            </mat-error>
+            <mat-error *ngIf="cuposControl.hasError('max')">
+              El cupo máximo es de 20 alumnos
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label> Grupos </mat-label>
+            <input
+              type="number"
+              matInput
+              [formControl]="gruposControl"
+              placeholder="1 -5"
+            />
+            <mat-hint>Rango de 1 a 5</mat-hint>
+            <mat-error *ngIf="gruposControl.hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="gruposControl.hasError('min')">
+              El mínimo de grupos es de 1
+            </mat-error>
+            <mat-error *ngIf="gruposControl.hasError('max')">
+              El máximo de grupos es de 5
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-button
+    type="submit"
+    form="cursosAltas"
+    [disabled]="!cursosForm.valid"
+    [mat-dialog-close]="true"
+  >
+    Añadir materia
+  </button>
+</mat-dialog-actions>
