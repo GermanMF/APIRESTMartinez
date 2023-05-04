@@ -11,14 +11,11 @@
               [formControl]="materiaControl"
               placeholder="Nombre de la materia"
             />
-            <mat-error *ngIf="materiaControl.hasError('required')">
-              Campo requerido
-            </mat-error>
-            <mat-error *ngIf="materiaControl.hasError('minlength')">
-              Se esperan al menos 3 caractéres
-            </mat-error>
-            <mat-error *ngIf="materiaControl.hasError('maxlength')">
-              Se esperan 15 caractéres como máximo
+            <mat-error *ngFor="let error of cuposControl.errors | keyvalue">
+               
+              {{
+              error | controlErrorMessages
+              }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -30,14 +27,11 @@
               [formControl]="tutorControl"
               placeholder="Tutor de la materia"
             />
-            <mat-error *ngIf="tutorControl.hasError('required')">
-              Campo requerido
-            </mat-error>
-            <mat-error *ngIf="tutorControl.hasError('minlength')">
-              Se esperan al menos 3 caractéres
-            </mat-error>
-            <mat-error *ngIf="tutorControl.hasError('maxlength')">
-              Se esperan 15 caractéres como máximo
+            <mat-error *ngFor="let error of cuposControl.errors | keyvalue">
+               
+              {{
+              error | controlErrorMessages : "Cursos"
+              }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -53,15 +47,20 @@
               placeholder="5 - 20"
             />
             <mat-hint>Rango de 5 a 20</mat-hint>
-            <mat-error *ngIf="cuposControl.hasError('required')">
-              Campo requerido
+            <mat-error *ngFor="let error of cuposControl.errors | keyvalue">
+               
+              {{
+              error | controlErrorMessages : "Cursos"
+              }}
             </mat-error>
+
+            <!-- 
             <mat-error *ngIf="cuposControl.hasError('min')">
               El cupo mínimo es de 5 alumnos
             </mat-error>
             <mat-error *ngIf="cuposControl.hasError('max')">
               El cupo máximo es de 20 alumnos
-            </mat-error>
+            </mat-error> -->
           </mat-form-field>
         </div>
         <div class="col">
@@ -74,14 +73,11 @@
               placeholder="1 -5"
             />
             <mat-hint>Rango de 1 a 5</mat-hint>
-            <mat-error *ngIf="gruposControl.hasError('required')">
-              Campo requerido
-            </mat-error>
-            <mat-error *ngIf="gruposControl.hasError('min')">
-              El mínimo de grupos es de 1
-            </mat-error>
-            <mat-error *ngIf="gruposControl.hasError('max')">
-              El máximo de grupos es de 5
+            <mat-error *ngFor="let error of cuposControl.errors | keyvalue">
+               
+              {{
+              error | controlErrorMessages : "Grupos"
+              }}
             </mat-error>
           </mat-form-field>
         </div>

@@ -2,7 +2,6 @@
     <mat-drawer #drawer class="sidenav-size" mode="side">
       <p>¡Bienvenido al portal de alumnos!</p>
       <br/>
-      <button mat-button (click)="logout()">Logout</button>
       <h3>Logueado: <b>{{ (authUser$ | async)?.nombre + ' ' + (authUser$ | async)?.apellido}}</b></h3>
       <mat-list role="list">
         <mat-list-item *ngFor="let linkProperty of linkProperties">
@@ -35,6 +34,17 @@
         <mat-icon>info</mat-icon>
       </a>
         <span class="toolbar-spacer"></span>
+        <span>{{ (authUser$ | async )?.nombre + ' ' + (authUser$ | async)?.apellido}}
+        </span>
+        <a
+        mat-icon-button
+        (click)="logout()"
+        class="sidenav-icon favorite-icon"
+        aria-label="icon-button with info icon"
+        matTooltip="Salir"
+      >
+        <mat-icon>logout</mat-icon>
+      </a>
         <!-- <span>
           <form
             [formGroup]="authForm"

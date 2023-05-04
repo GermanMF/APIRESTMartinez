@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
-  emailControl = new FormControl("", [Validators.required]);
+  emailControl = new FormControl("", [Validators.required, Validators.email]);
   passwordControl = new FormControl("", [Validators.required]);
   loginForm = new FormGroup({
     email: this.emailControl,
@@ -27,8 +27,7 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      this.authService.login(this.loginForm.value as LoginFormValue)
+      this.authService.login(this.loginForm.value as LoginFormValue);
     }
   }
-
 }
