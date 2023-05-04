@@ -3,7 +3,7 @@ import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
 import { Usuario } from 'src/app/core/models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/environment/environment.prod';
 
 export interface LoginFormValue {
   email: string;
